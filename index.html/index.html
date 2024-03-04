@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoSoft</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #DBE4EE;
+    }
+    
+    .header {
+        background-color: #DBE4EE;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .logo {
+        background-color: #DBE4EE;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+        animation: fadeInUp 1s forwards 0s;
+    }
+    
+    .logo img {
+        height: 100%;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    nav {
+        background-color: #0D1321;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeInUp 0s forwards 0s;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    
+    nav ul li {
+        margin-right: 10px;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        font-size: large;
+        color: #DBE4EE;
+        padding: 5px 30px;
+        position: relative;
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    nav ul li a:hover {
+        color: #DBE4EE;
+        transform: scale(1.1);
+    }
+    
+    nav ul li a::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #DBE4EE;
+        transform: scaleX(0);
+        transform-origin: bottom center;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    nav ul li a:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom center;
+    }
+    
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    .image-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        color: rgb(255, 255, 250);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: large;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+    
+    .slider2 {
+        width: 100%;
+        height: 50rem;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 5s forwards 1s;
+    }
+    
+    .slider2 img {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .screen2 {
+        background-color: #DBE4EE;
+        color: #0D1321;
+        padding: 0;
+        text-align: center;
+        transition: color 0.3s ease-in-out;
+        animation: fadeInUp 0s forwards 0s;
+        opacity: 0;
+    }
+    
+    .heading2 {
+        font-family: 'Arial', sans-serif;
+        font-size: large;
+        color: rgb(189, 189, 189);
+        background-color: #000000;
+    }
+    
+    .imagescroll-container img {
+        width: auto;
+        height: 100%;
+        float: left;
+        border-top: solid 5px #0D1321;
+        border-bottom: solid 5px #0D1321;
+    }
+    
+    footer {
+        background-color: #81A4CD;
+        padding: 50px 10px;
+    }
+    
+    footer p {
+        font-size: small;
+    }
+    
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .footer-logo img {
+        height: 25px;
+        padding-right: 20px;
+    }
+    
+    .footer-links ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links ul li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    
+    .footer-links ul li:last-child {
+        margin-right: 0;
+    }
+    
+    .footer-links ul li a {
+        color: #0D1321;
+        text-decoration: none;
+    }
+    
+    .footer-social ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-social ul li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .footer-social ul li:last-child {
+        margin-right: 0;
+    }
+    
+    .footer-social ul li a {
+        color: #0D1321;
+        text-decoration: none;
+        font-size: 10px;
+    }
+    
+    .footer-info {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 10px;
+    }
+    
+    .footer-social img {
+        height: 15px;
+        border-radius: 30px;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .container-ac {
+        height: 400px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .card-ac {
+        width: 80px;
+        border-radius: .75rem;
+        background-size: cover;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 2rem;
+        margin: 0 10px;
+        display: flex;
+        align-items: flex-end;
+        transition: .6s cubic-bezier(.28, -0.03, 0, .99);
+        box-shadow: 0px 10px 30px -5px #0D1321;
+    }
+    
+    .card-ac>.row {
+        color: #DBE4EE;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    .card-ac>.row>.icon {
+        background: #0D1321;
+        color: #DBE4EE;
+        border-radius: 50%;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px;
+    }
+    
+    .card-ac>.row>.description {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        height: auto;
+        width: 520px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition-delay: .3s;
+        transition: all .3s ease;
+    }
+    
+    .description p {
+        color: #0D1321;
+        padding-top: 5px;
+        text-align: center;
+    }
+    
+    .description h4 {
+        color: #0D1321;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    input {
+        display: none;
+    }
+    
+    input:checked+label {
+        width: 600px;
+    }
+    
+    input:checked+label .description {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    .card-ac[for="c1"] {
+        background-image: url('https://images.unsplash.com/photo-1616627502968-858f7b39f574?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRpc3N1ZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    
+    .card-ac[for="c2"] {
+        background-image: url('https://images.unsplash.com/photo-1583496597583-624c6768360c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRpc3N1ZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    
+    .card-ac[for="c3"] {
+        background-image: url('https://images.unsplash.com/photo-1697537314275-4dd128cc2621?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    }
+    
+    @keyframes fadeInUp5 {
+        from {
+            opacity: 0;
+            transform: translateY(0px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes scrollCards3 {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .card {
+            width: 100%;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(0px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+    @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700&display=swap");
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .body {
+        --color: rgba(30, 30, 30);
+        --bgColor: rgba(245, 245, 245);
+        min-height: 100vh;
+        display: grid;
+        align-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        font-family: "Exo 2", sans-serif;
+        color: var(--color);
+        background: var(--bgColor);
+    }
+    
+    h1 {
+        text-align: center
+    }
+    
+    ol {
+        width: min(60rem, 90%);
+        margin-inline: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style: none;
+        counter-reset: stepnr;
+    }
+    
+    li:nth-child(6n+1) {
+        --accent-color: #b8df4e
+    }
+    
+    li:nth-child(6n+2) {
+        --accent-color: #4cbccb
+    }
+    
+    li:nth-child(6n+3) {
+        --accent-color: #7197d3
+    }
+    
+    li:nth-child(6n+4) {
+        --accent-color: #ae78cb
+    }
+    
+    li:nth-child(6n+5) {
+        --accent-color: #7dc7a4
+    }
+    
+    li:nth-child(6n+6) {
+        --accent-color: #f078c2
+    }
+    
+    ol li {
+        counter-increment: stepnr;
+        width: 18rem;
+        --borderS: 2rem;
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: calc(var(--borderS) + 2rem);
+        position: relative;
+    }
+    
+    ol li::before,
+    ol li::after {
+        inset: 0;
+        position: absolute;
+        border-radius: 50%;
+        border: var(--borderS) solid var(--bgColor);
+        line-height: 1.1;
+    }
+    
+    ol li::before {
+        content: counter(stepnr);
+        color: var(--accent-color);
+        padding-left: 10rem;
+        font-size: 12rem;
+        font-weight: 700;
+        overflow: hidden;
+    }
+    
+    ol li::after {
+        content: "";
+        filter: drop-shadow(-0.25rem 0.25rem 0.0675rem rgba(0, 0, 0, 0.75)) blur(5px);
+    }
+    
+    ol li>* {
+        width: 7.5rem
+    }
+    
+    ol li .icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+        text-align: center
+    }
+    
+    ol li .title {
+        font-size: 2rem;
+        font-weight: 500
+    }
+    
+    ol li .descr {
+        font-size: 0.8rem;
+        font-weight: 300
+    }
+    
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .body2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #DBE4EE;
+        margin: 0;
+        margin-top: 30px;
+    }
+    
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .card h2 {
+        margin-bottom: 10px;
+        color: #81A4CD;
+        font-family: 'Arial', sans-serif;
+        font-size: larger;
+    }
+    
+    .card p {
+        color: #DBE4EE;
+        font-size: medium;
+    }
+    
+    .container .card {
+        position: relative;
+        width: 320px;
+        height: 350px;
+        background: #0D1321;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .container .card:after {
+        position: absolute;
+        top: 30%;
+        left: -20%;
+        font-size: 12em;
+        font-weight: 800;
+        font-style: italic;
+        color: rgba(255, 255, 25, 0.05);
+    }
+    
+    .container .card .contentBx {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        transition: 1s;
+        z-index: 10;
+    }
+    
+    .container .card:hover .contentBx {
+        height: 210px;
+    }
+    
+    .container .card .contentBx h2 {
+        position: relative;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #81A4CD;
+        margin: 0;
+    }
+    
+    .container .card .contentBx .size,
+    .container .card .contentBx .color {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 20px;
+        transition: 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    .container .card:hover .contentBx .size {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.5s;
+    }
+    
+    .container .card:hover .contentBx .color {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.6s;
+    }
+    
+    .container .card .contentBx .size h3,
+    .container .card .contentBx .color h3 {
+        color: #fff;
+        font-weight: 300;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-right: 10px;
+    }
+    
+    .container .card .contentBx .size span {
+        width: 26px;
+        height: 26px;
+        text-align: center;
+        line-height: 26px;
+        font-size: 14px;
+        display: inline-block;
+        color: #111;
+        background: #fff;
+        margin: 10px 10px;
+        transition: 0.5s;
+        color: #111;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .container .card .contentBx .size span:hover {
+        background: #81A4CD;
+    }
+    
+    .container .card .contentBx .color span {
+        width: 20px;
+        height: 20px;
+        background: #DBE4EE;
+        border-radius: 50%;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+    
+    .container .card .contentBx .color span:nth-child(2) {
+        background: #145aff;
+    }
+    
+    .container .card .contentBx .color span:nth-child(3) {
+        background: #f4e003;
+    }
+    
+    .container .card .contentBx .color span:nth-child(4) {
+        background: #df0e0e;
+    }
+    
+    .container .card .contentBx a {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #81A4CD;
+        border-radius: 4px;
+        margin-top: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #0D1321;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 0.5s;
+        margin-top: 20px;
+    }
+    
+    .container .card:hover .contentBx a {
+        opacity: 1;
+        transform: translateY(0px);
+        transition-delay: 0.75s;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .container .card {
+            width: calc(50% - 20px);
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .container .card {
+            width: calc(100% - 20px);
+        }
+    }
+    
+    @import url(//fonts.googleapis.com/css?family=Abril+Fatface|Droid+Serif:400,700,400italic,700italic);
+    html,
+    .body2 {
+        height: 100%
+    }
+    
+    .blog-card {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        font-family: 'Droid Serif', serif;
+        color: #fff;
+        top: 20%;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 0px;
+        box-shadow: 0px 10px 20px -9px rgba(5, 15, 67, 0.5);
+        text-align: center;
+        transition: all 0.4s;
+        background: url(https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center no-repeat;
+        background-size: 100%;
+    }
+    
+    .blog-card a {
+        color: #0D1321;
+        text-decoration: none;
+        transition: all 0.2s
+    }
+    
+    .blog-card .color-overlay {
+        background: rgba(64, 84, 94, 0.5);
+        width: auto;
+        height: 500px;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        transition: background 0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
+    }
+    
+    .blog-card .gradient-overlay {
+        background-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.6) 21%);
+        width: auto;
+        height: 500px;
+        position: absolute;
+        top: 350px;
+        left: 0;
+        z-index: 15;
+    }
+    
+    .blog-card:hover .card-info {
+        opacity: 1;
+        bottom: 100px;
+    }
+    
+    .blog-card:hover .color-overlay {
+        background: #0d1321b1;
+        width: 100%;
+    }
+    
+    .blog-card:hover .title-content {
+        margin-top: 70px
+    }
+    
+    .title-content {
+        text-align: center;
+        margin: 170px 0 0 0;
+        position: absolute;
+        z-index: 20;
+        width: 100%;
+        top: 0;
+        left: 0;
+        transition: all 0.6s
+    }
+    
+    .blog-card:hover h3:after {
+        animation: changeLetter 0.3s 1 linear;
+        width: 80%
+    }
+    
+    .blog-card h3,
+    h1 {
+        font-size: 1.9em;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-family: 'Abril Fatface', serif;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+    
+    .blog-card h3 a {
+        text-shadow: 0px 0px 10px #0D1321;
+        transition: all 0.2s
+    }
+    
+    .blog-card h3 a:hover {
+        text-shadow: 0px 8px 20px #81A4CD;
+    }
+    
+    h3:after {
+        content: " ";
+        display: block;
+        width: 10%;
+        height: 2px;
+        margin: 20px auto;
+        border: 0;
+        background: #0D1321;
+        transition: all 0.2s
+    }
+    
+    @keyframes changeLetter {
+        0% {
+            width: 10%;
+        }
+        100% {
+            width: 80%;
+        }
+    }
+    
+    .card-info {
+        box-sizing: border-box;
+        padding: 0;
+        width: 100%;
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+        margin: 0 auto;
+        padding: 0 50px;
+        font-style: 16px;
+        line-height: 24px;
+        z-index: 20;
+        opacity: 0;
+        transition: bottom 0.64s, opacity 0.63s cubic-bezier(0.33, 0.66, 0.66, 1);
+    }
+    
+    .card-info a {
+        display: block;
+        width: 100px;
+        margin: 25px auto;
+        background: #81A4CD;
+        color: #0D1321;
+        padding: 3px 3px;
+        border-radius: 8px;
+        font-size: 1em;
+    }
+    
+    .card-info a:hover {
+        background: #DBE4EE;
+        color: #0D1321;
+    }
+    
+    .card-info a:hover span {
+        filter: brightness(10);
+        opacity: 1 repeat;
+        background-size: 250px;
+        width: 26px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: -3px;
+        left: 0;
+    }
+    
+    @media (max-width:750px) {
+        .utility-info {
+            text-align: center;
+        }
+        .utility-info ul {
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box
+        }
+        .utility-info li {
+            width: 49%;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0
+        }
+    }
+    
+    @media (max-width:500px) {
+        .utility-info li:last-of-type {
+            width: 100%
+        }
+        .card-info {
+            display: flex;
+        }
+        .blog-card:hover .title-content,
+        .title-content {
+            margin-top: 40px
+        }
+        .blog-card {
+            height: 300px
+        }
+        .blog-card h3 {
+            font-size: 1.3em
+        }
+    }
+</style>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="https://ecosoft.com.pk/wp-content/uploads/2023/01/logo.png">
+        </div>
+
+        <nav>
+            <ul>
+                <!--<li><a id="scrollButton" href="#">Home</a></li>-->
+                <li><a id="scrollButton2" href="#">Products</a></li>
+                <li><a id="scrollButton4" href="/Users/umarahmad/Desktop/EcoSoft/contactus.html">Contact Us</a></li>
+                <li><a id="scrollButton3" href="#">Info</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="image-container">
+        <img src="https://img.freepik.com/free-photo/sad-woman-pulling-out-napkins-from-box-with-copy-space_23-2148426337.jpg?w=2000&t=st=1708641666~exp=1708642266~hmac=764cde087fb0d27a34a673f199aa6498b261d44694c1ed848a6d5ea72e39c24a">
+        <div class="image-title"><b>❝ Softness Redefined, Moments Perfected ❞</b></div>
+    </div>
+
+    <div class="screen2">
+        <br>
+        <br>
+        <h1>Products</h1>
+
+    </div>
+
+    <div class="body2">
+        <div class="container">
+            <div class="card">
+                <div class="imgBx">
+                    <img src="https://images.pexels.com/photos/3738344/pexels-photo-3738344.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tissue Image">
+                </div>
+                <div class="contentBx">
+                    <h2>Hi-Jeen Tissue</h2>
+                    <p>Softness for Every Moment</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="imgBx">
+                    <img src="https://images.pexels.com/photos/3963076/pexels-photo-3963076.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tissue Roll Image">
+                </div>
+                <div class="contentBx">
+                    <h2>Tissue Roll</h2>
+                    <p>Elevate Comfort</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="imgBx">
+                    <img src="https://images.unsplash.com/photo-1662353253033-bbdb194e63ac?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRpc3N1ZSUyMGRpc3BlbnNlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Tissue Dispenser Image">
+                </div>
+                <div class="contentBx">
+                    <h2>Tissue Dispenser</h2>
+                    <p>Effortless Convenience</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="imgBx">
+                    <img src="https://images.unsplash.com/photo-1607166547650-8ba1b4a280df?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRpc3N1ZSUyMG5hcGtpbnN8ZW58MHx8MHx8fDA%3D" alt="Another Tissue Image">
+                </div>
+                <div class="contentBx">
+                    <h2>Tissue Napkins</h2>
+                    <p>Unfold comfort every time</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1675176785665-8d6aef6b7d8a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Manufacture</h5>
+                    <p>Crafted with care, our tissue factory employs only the finest quality wood ensuring premium and sustainable manufacturing processes</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1491838592561-ab572ec2d2cb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRpc3N1ZSUyMHRyZWUlMjBmb3Jlc3R8ZW58MHx8MHx8fDA%3D" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Quality Wood Used</h5>
+                    <p>we source wood exclusively from licensed forests, ensuring responsible and sustainable practices at every step of our manufacturing process</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1610021684546-0df49fdd1621?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>The Final Product</h5>
+                    <p>From forest to final product, our tissues embody purity, softness, and reliability, delivering comfort with every touch</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+    </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container-ac">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="card-ac">
+                <div class="row">
+                    <div class="description">
+                        <h4>About Us</h4>
+                        <p>"At EcoSoft, we're committed to providing premium quality tissue products that not only meet your daily needs but also contribute positively to the environment. We believe in a sustainable future where every action counts, which is why our tissues are crafted using eco-friendly materials and processes. Our dedication to environmental responsibility is evident in every aspect of our brand, from our responsibly sourced materials to our biodegradable packaging. With EcoSoft, you can experience the perfect balance of comfort, convenience, and conscience in every tissue."</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c2">
+            <label for="c2" class="card-ac">
+                <div class="row">
+                    <div class="description">
+                        <h4>Socials & Blog</h4>
+                        <p>Keep intracting with us on our Instagram : ecosoft</p>
+                        <p>At EcoSoft, we understand the importance of preserving our planet for future generations. That's why we've made it our mission to provide consumers with tissue products that not only meet their needs but also minimize their environmental footprint. </p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3">
+            <label for="c3" class="card-ac">
+                <div class="row">
+                    <div class="description">
+                        <h4>Contact Info</h4>
+                        <p>Somethings going on in your head, talk to us at : <b>0300 402 2530 || 0306 115 1155</b></p>
+                        <p>You may mail us at : ecosoft@gmail.com</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="body">
+        <h1>You Must Know!</h1>
+        <ol>
+            <li>
+                <div class="icon"><i class="fa-solid fa-bicycle"></i></div>
+                <div class="title">Dependable</div>
+                <div class="descr">Test us and you'll know</div>
+            </li>
+            <li>
+                <div class="icon"><i class="fa-solid fa-car"></i></div>
+                <div class="title">Quality Conscious</div>
+                <div class="descr">Best rates get you the best quality here</div>
+            </li>
+            <li>
+                <div class="icon"><i class="fa-solid fa-helicopter"></i></div>
+                <div class="title">Always Improving</div>
+                <div class="descr">Every passing day brings improvement in us</div>
+            </li>
+        </ol>
+    </div>
+    <div class="blog-card spring-fever">
+        <div class="title-content">
+            <h3><a href="#">Partner With Us</a></h3>
+        </div>
+        <div class="card-info">
+            <h4>join forces with EcoSoft Tissues<br> together, let's embark on a journey of growth and prosperity</h4>
+            <a href="/Users/umarahmad/Desktop/EcoSoft/partner.html">Join Hands<span class="licon icon-arr icon-black"></span></a>
+        </div>
+        <div class="gradient-overlay"></div>
+        <div class="color-overlay"></div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://ecosoft.com.pk/wp-content/uploads/2023/01/logo.png">
+            </div>
+            <!-- <div class="footer-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Info</a></li>
+                </ul>
+            </div>-->
+
+            <div class="footer-social">
+                <ul>
+                    <li>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEUVfcP///8AdMAAd8Hz+fzv9fr6/f4fgMXQ4fAAc78AecHm7/eLtdt1qdZ+r9gAcb7Z5/NBj8uav+Bbm9AphcfH2+260ummxuOfwuE6jMrd6vVRls5moNJtpNNWmc8pg8W+1uuwzOYAabuQud2SFzxcAAAEJklEQVR4nO3da3uiMBCGYQRFHA8RPFXRba3//z9uddfDamsG4hAm+z7fpbkvlGiBEHVCL/I9APH+P2FXfekT4XS0piTWXkL5YfOtcJobisKITLl5FBbB+I6RWd0LxwPfg3pxZvSvsAgN+EVc3Qqnxvd4BDLDG2HuezQS0ewqzELcheedeBJOQjqMXkuKi3DueywyUXkWponvsUh1FvZi3yMRKglfmEKoPQj1B6H+INQfhPqDUH8Q6g9C/UGoPxVCulTjxa0WUhIP4miez7a73W67nf0q83z+3o8oNoPTSUIOubXCL8X77m2xuT+beyzt9jbZYrk6jGdr64baKaRBNF52v7E9NrbtxjYKk3icsXRKhXF/9d07Mxhh0t9X4OkTUlxU82kTxmWvKlCX0LxV9qkSEk1rABUJaV79HapKSOsqU4RCIc1rAtUII95XNL3CeFgXqERoPmoDdQiTSX2gDmHfAahCaBaBC/9eWxew0NQ/juoQ0tgJqEDouAvbL3T8FCoQDpwOpBqETnOhBiGNbALtwkGt3/WahO53zbVc6DoZtl+Y7EMXVpnuh4t9MZo8ZD355HkfMnXpcksmThJ6zP43vApLHvCN4vq3u3gVEuvHfXftNDSvwoTzb/xu5Ha7kldhzPlSmjvej+VXyPhGs3cdl1fhgHGqou/6R/x+Du3/6c6c79z1eyy1n6wYOd8V6Xc+tL9J3W/dbbvQ/cZWr0L7D/yu+83JLRcO3ZcIaLlw6j6qlgszCO1BKBqEELKCUDQIIWQFoWgQQsgKQtEghJAVhKJBqENIgx8z9pPc2efPLz/lX0iT3vDnrML0yYuP9d79C50v63qe/ysVhIU9+9tUuZBxJFIuXAYvLOxrkioXWq9qUy8sgxfap0PtQsYpYt3CYfBCzhdz3cI9YwFr3cJDC1bgkRUypkPlQs4VU7qFnBGoFnY5Y1YtZF0xpVq4CH4fcqZD3ULOdKhbuA1eaF9wT7uQNQLNQt4FxJqFG9YFxJqFH6whaxauWI830izkPYNLs5A1HaoW8p4yplnIG7H8OeAnz0MlKyL7fPJy3gBwHl80CCFkBaFoEELICkLRIISQFYSiQQghKwhFgxBCVhCKBiGErCAUDUIIWUEoGoQQsoJQNAghZAWhaBBCyApC0SCEkBWEokEIISsIRYMQQlYQigYhhKwgFA1CCFlBKBqEELKCUDQIIWQFoWgQQsjqtPD7UZiyFgp5bY0Io7OQucrES2tCSOVFyFsL5aU1IUyKizBzf2xr1ZoQmuFF+IKHC1etASHNOldh8zuxAeGfXfhX2Dm4P3y3WvJCs+rcCjvjhoniQnNe/+cs7BSm0QOqsJDOe/BG2JmWTRpFhWRm16e8RDfbnI7WlDQTYxWlxWfNbVN+2NxsJ7rbbld96Z3oXhheEOrvN+bGaNyBvxVbAAAAAElFTkSuQmCC">
+                        <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
+                    </li>
+                    <li>
+                        <img src="data:image/png;base64,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">
+                        <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+                    </li>
+                    <li>
+                        <img src="data:image/jpeg;base64,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">
+                        <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer">
+                <ul>
+                    <li>
+                        <p>0300 402 2530</p>
+                    </li>
+                    <li>
+                        <p>0306 115 1155</p>
+                    </li>
+                    <li>
+                        <p>ecosoft@gmail.com</p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2024 ecosoft.com.pk All Rights Reserved. Designed & Developed By UAS Developers</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach((card) => {
+                card.style.opacity = 1;
+                card.style.transform = "translateY(0)";
+            });
+        });
+    </script>
+
+
+
+    <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+
+    <script>
+        const container = document.querySelector('.imagescroll-container');
+        const image = document.querySelectorAll('.imagescroll-container img');
+
+        let currentPosition = 0;
+
+        function scrollImages() {
+            currentPosition -= 1;
+            if (currentPosition < -images[0].width) {
+                currentPosition = 0;
+            }
+            container.style.transform = `translateX(${currentPosition}px)`;
+            requestAnimationFrame(scrollImages);
+        }
+
+        scrollImages();
+    </script>
+
+    <script>
+        document.getElementById('scrollButton').addEventListener('click', function() {
+            document.querySelector('.header').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('scrollButton2').addEventListener('click', function() {
+            document.querySelector('.screen2').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('scrollButton4').addEventListener('click', function() {
+            document.querySelector('.wrapper').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('scrollButton3').addEventListener('click', function() {
+            document.querySelector('.title-content').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
